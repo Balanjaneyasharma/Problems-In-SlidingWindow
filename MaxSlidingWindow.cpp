@@ -13,3 +13,25 @@ public:
         return ans;
     }
 };
+//-------------------------------------------------------------------  Brute force  ------------------------------------------------------------------------------------//
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int>win;
+        vector<int>ans;
+        int maxi;
+        for(int i = 0 ;i< k;i++){
+            win.push_back(nums[i]);
+        }
+        maxi = *max_element(win.begin(),win.end());
+        ans.push_back(maxi);
+        for(int i =k;i<nums.size();i++){
+            win.erase(win.begin());
+            win.push_back(nums[i]);
+            maxi = *max_element(win.begin(),win.end());
+            ans.push_back(maxi);
+        }
+        return ans;
+        
+    }
+};
